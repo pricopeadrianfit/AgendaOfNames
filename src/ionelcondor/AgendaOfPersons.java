@@ -6,17 +6,14 @@ package ionelcondor;
 
 import java.util.Scanner;
 
+public class AgendaOfPersons {
 
-import java.util.Scanner;
-
-public class AgendaOfNames {
-
-    String[] nameAgenda = new String[50];
-    int index = 0;
+    Person[] nameAgenda = new Person[50];
+  private int index = 0;
 
     public static void main(String[] args) {
         System.out.println("AgendaTa versiunea 2.0");
-        AgendaOfNames m = new AgendaOfNames();
+        AgendaOfPersons m = new AgendaOfPersons();
 
 
         do {
@@ -40,7 +37,7 @@ public class AgendaOfNames {
                     m.deleteItem();
                     break;
                 case 6:
-                    m.daBunaZiua();
+                //    m.daBunaZiua();
                     break;
 
                 case 9:
@@ -75,9 +72,9 @@ public class AgendaOfNames {
         System.out.println("This option does not exist. Pls take another option");
     }
 
-    private String readName() {
+    private String readAString(String label) {
         Scanner s = new Scanner(System.in);
-        System.out.print("Name: ");
+        System.out.print(label);
         String name = s.nextLine();
         return name;
     }
@@ -90,16 +87,22 @@ public class AgendaOfNames {
     }
 
 
-    private void daBunaZiua() {
+  /*  private void daBunaZiua() {
         System.out.println("buna ziua");
-    }
+    }*/
 
     private void createItem() {
-        //daca am ajuns la 50 mesaj ca e plin
+        //daca am ajuns la 50 mesaj ca e pln
         //citire
         //adugare in array d
+        //String val = readName();
+        Person val = new Person();
+        String Name=readAString("Name:");
+        String phone=readAString("Phone: ");
+        val.setName(Name);
+        val.setPhone(phone);
+
         if (index < nameAgenda.length) {
-            String val = readName();
             nameAgenda[index] = val;
             index++;
         } else
@@ -107,11 +110,11 @@ public class AgendaOfNames {
         {
             System.out.println("Agenda de nume este plina");
         }
-
     }
 
 
     private void updateItem() {
+        /*
         //search and if found do an update
         boolean isFound = false;
         String oldName = readName();
@@ -128,11 +131,14 @@ public class AgendaOfNames {
                 if (!isFound)
                     System.out.println("Name" + oldName + " was not found in the agenda");
             }
-        }
+        }*/
+
+
     }
 
 
     private void deleteItem() {
+/*
 
         String oldName = readName();
         for (int i = 0; i < nameAgenda.length; i++) {
@@ -144,12 +150,13 @@ public class AgendaOfNames {
                 }
             }
         }
+        */
     }
 
 
     /* returns the index where the name was found or -1 if the name is not in the agenda*/
-    private int searchAgenda() {/*
-
+    private int searchAgenda() {
+/*
         String searchName = readName();
         for (int i = 0; i < nameAgenda.length; i++) {
             if (nameAgenda[i] != null) {
@@ -163,7 +170,6 @@ public class AgendaOfNames {
         }
         */
         return 0;
-
     }
 
 
@@ -173,7 +179,9 @@ public class AgendaOfNames {
         int counter = 0;
         for (int i = 0; i < nameAgenda.length; i++) {
             if (nameAgenda[i] != null) {
-                System.out.println(nameAgenda[i]);
+                Person p = nameAgenda[i];
+                System.out.println(p.getName());
+                System.out.println(p.getPhone());
                 counter++;
             }
         }
